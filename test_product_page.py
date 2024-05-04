@@ -53,6 +53,13 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page.should_be_nothing_items_in_basket()
     basket_page.should_be_basket_is_empty()
 
+@pytest.mark.xfail
+def test_guest_can_see_product_in_basket_opened_from_product_page(browser):
+    page = ProductPage(browser, link)
+    page.open()
+    page.click_button_see_in_basket()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_be_some_items_in_basket()
 
 link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209"
 

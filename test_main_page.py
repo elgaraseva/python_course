@@ -1,3 +1,5 @@
+import pytest
+
 from .pages.login_page import LoginPage
 from .pages.main_page import MainPage
 from .pages.basket_page import BasketPage
@@ -26,3 +28,11 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     basket_page = BasketPage(browser, browser.current_url)
     basket_page.should_be_nothing_items_in_basket()
     basket_page.should_be_basket_is_empty()
+
+@pytest.mark.xfail
+def test_guest_can_see_product_in_basket_opened_from_main_page(browser):
+    page = MainPage(browser, link)
+    page.open()
+    page.click_button_see_in_basket()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_be_some_items_in_basket()
