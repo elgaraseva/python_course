@@ -34,3 +34,9 @@ class ProductPage(BasePage):
     def should_be_price_of_book(self, expected_price):
         actual_price = self.browser.find_element(*ProductPageLocators.ACTUAL_PRICE_OF_BOOK).text
         assert actual_price == expected_price, f"The price {actual_price} in basket doesn't equal {expected_price}"
+
+    def should_not_be_success_message(self):
+        assert not self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def should_not_be_success_message_not_disappeared(self):
+        assert not self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is not disappeared"

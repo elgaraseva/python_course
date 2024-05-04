@@ -1,8 +1,10 @@
 import math
 
 from conda.common.io import timeout
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import NoAlertPresentException, TimeoutException
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
@@ -14,6 +16,7 @@ class BasePage:
 
     def open(self):
         self.browser.get(self.url)
+        self.browser.execute_script("window.scrollBy(0, 100);")
 
     def is_element_present(self, how, what):
         try:
@@ -35,3 +38,24 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    # проверка, что элемент не появляется на странице в течение заданного времени
+    # упадет, как только увидит искомый элемент. не появился: успех, тест зеленый
+    def is_not_element_present(self, how, what, timeout=0):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
+
+    # проверка, что элемент исчезает
+    # будет ждать до тех пор, пока элемент не исчезнет
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
+                until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
