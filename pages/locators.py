@@ -4,7 +4,8 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
-
+    BUTTON_SEE_IN_BASKET = (By.CSS_SELECTOR, '[href="/ru/basket/"]')
+    MESSAGE_EMPTY_BASKET = (By.CSS_SELECTOR, "#content_inner p")
 
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
