@@ -9,6 +9,7 @@ class BasePageLocators:
     SUCCESS_REG_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
+
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
@@ -16,6 +17,7 @@ class LoginPageLocators:
     REG_PASSWORD = (By.NAME, "registration-password1")
     RETRY_REG_PASSWORD = (By.NAME, "registration-password2")
     REG_BUTTON = (By.NAME, "registration_submit")
+
 
 class ProductPageLocators:
     BUTTON_ADD_TO_BASKET = (By.CSS_SELECTOR, ".btn-add-to-basket")

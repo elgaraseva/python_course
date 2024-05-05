@@ -1,8 +1,9 @@
-from .base_page import BasePage
-from .locators import LoginPageLocators
-from .locators import BasePageLocators
-import time
 import random
+import time
+
+from .base_page import BasePage
+from .locators import BasePageLocators
+from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
