@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
-    BUTTON_SEE_IN_BASKET = (By.CSS_SELECTOR, '[href="/ru/basket/"]')
+    BUTTON_SEE_IN_BASKET = (By.CSS_SELECTOR, "a[class='btn btn-default']")
     MESSAGE_EMPTY_BASKET = (By.CSS_SELECTOR, "#content_inner p")
     SUCCESS_REG_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
